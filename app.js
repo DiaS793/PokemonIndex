@@ -33,9 +33,14 @@ fetch('https://pokeapi.co/api/v2/pokemon/1')
     pokeTypeOne.textContent = 
     dataFirstType['type']['name'];
     if (dataSecondType) {
+      pokeTypeTwo.classList.remove('hide');
       pokeTypeTwo.textContent = 
       dataSecondType['type']['name'];
     } else {
+        pokeTypeTwo.classList.add('hide');
         pokeTypeTwo.textContent='';
     }
+
+    pokeFrontImage.src = data['sprites']['front_default'] || '';
+    pokeBackImage.src = data['sprites']['back_default'] || '';
   });
