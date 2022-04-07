@@ -28,9 +28,13 @@ const TYPES =[
   'electric', 'psychic', 'ice', 'dragon', 'dark', 'fairy'
 ];
 
+
 //Functions
 
+const capitalize = (str) => str[0].toUpperCase() + str.substr(1);
+
 const resetScreen =()=> {
+  mainScreen.classList.remove('hide');
   for (const type of TYPES) {
     console.log(type)
     mainScreen.classList.remove(type);
@@ -47,7 +51,7 @@ fetch('https://pokeapi.co/api/v2/pokemon/1')
     const dataTypes = data['types'];
     const dataFirstType = dataTypes[0];
     const dataSecondType = dataTypes[1];
-    pokeTypeOne.textContent = dataFirstType['type']['name'];
+    pokeTypeOne.textContent = capitalize(dataFirstType['type']['name']);
     if (dataSecondType) {
       pokeTypeTwo.classList.remove('hide');
       pokeTypeTwo.textContent = dataSecondType['type']['name'];
@@ -68,7 +72,7 @@ fetch('https://pokeapi.co/api/v2/pokemon/1')
 
     //gives this where the physical properties are brought in 
     //for the pokemon.
-    pokeName.textContent = data['name'];
+    pokeName.textContent = capitalize(data['name']);
     pokeId.textContent = data['id'];
     pokeWeight.textContent = data['weight'];
     pokeHeight.textContent = data['height'];
